@@ -1,0 +1,9 @@
+{
+    "time":{
+        "init":[8,30],
+        "end":[19,0]
+    },
+    "default_number_persons":100,
+    "default_activity":0.7,
+    
+}

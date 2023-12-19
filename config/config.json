@@ -1,0 +1,9 @@
+{
+    "debug" : false,
+    "priority" : 32,
+    "key" : "189rjfadoisfj8923fjio",
+    "j":{
+        "test1":1,
+        "test2":2
+    }
+}
