@@ -13,8 +13,10 @@ mod person;
 fn main(){
     println!("-------------------------");
     println!("-------------------------");
-    let p = park::Park{..Default::default()};
-    p.init()
+    let mut p = park::Park{..Default::default()};
+    p.init();
+    p.add_person(4);
+    p.init();
 
 }
 
@@ -36,4 +38,9 @@ fn test_structure(){
 #[test]
 fn test_park(){
     let p = park::Park{..Default::default()};
+}
+
+#[test]
+fn test_person(){
+    let p = person::Person{..Default::default()};
 }

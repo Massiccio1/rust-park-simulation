@@ -1,5 +1,6 @@
 use rand::Rng;
 
+static mut ID:u32=0;
 
 pub struct Structure{
     pub name: String,
@@ -20,36 +21,40 @@ pub struct Structure{
 impl Default for Structure {
     fn default() -> Self {
         let mut rng = rand::thread_rng();
-        let r:f32 = rng.gen_range(0.0..100000.0);
+        let x:u32 = rng.gen_range(0..10);
+        let y:u32 = rng.gen_range(0..10);
 
-        Structure{
-            name: format!("default_name_{r}"),
-            position: (1 ,1),
-            capacity: 10,
-            rtt: 5,
-            down_time: 2,
-        
-            line: 0, 
-            line_log: vec![],
+        return unsafe { 
+            
+            ID+=1;
 
-            attractivity: 5
-        
-        }
+            Structure{
+                name: format!("default_name_{ID}"),
+                position: (x ,y),
+                capacity: rng.gen_range(1..100),
+                rtt: rng.gen_range(3..20),
+                down_time: rng.gen_range(1..10),
+            
+                line: 0, 
+                line_log: vec![],
+
+                attractivity: rng.gen_range(0..5)
+            
+            }
+        };
     }
 }
 
 impl std::fmt::Display for Structure {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "name: {}\n
-            position: {}, {}\n
-            capacity: {}\n
-            rtt: {}\n
-            down_time: {}\n
-        
-            current line: {}\n
-            line_log: {:?}\n
-
-            attractivity: {}", 
+        write!(f, "name: {}
+position: {}, {}
+capacity: {}
+rtt: {}
+down_time: {}
+current line: {}
+line_log: {:?}
+attractivity: {}", 
             self.name, self.position.0, self.position.1, self.capacity, self.rtt, self.down_time, self.line, self.line_log, self.attractivity)
     }
 }
