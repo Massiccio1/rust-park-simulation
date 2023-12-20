@@ -247,6 +247,9 @@ impl Park {
 
         for p in ppl{
             //random if they chose another site
+            if p.ready && p.pause<=0{
+                                
+            }
         }
     
         // for ppl in self.get_ppl_mut(){

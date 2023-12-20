@@ -8,7 +8,7 @@ pub struct Person{
 
     pub log_structures: Vec<(u32, u32)>, //vettore log dei luoghi visitati e il momento della visita
     
-    pub pause: u32,    //valore di attività da 0 a 1
+    pub pause: u32,    //time to move from one zone to another
 
     pub ready: bool,
     pub onboard: bool,
