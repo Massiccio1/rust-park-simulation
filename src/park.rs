@@ -76,9 +76,16 @@ pub fn vec_to_string_ppl(vs:&Vec<Person>) -> String{
         }
         return s;
 }
+
+pub fn dist(s_x:i32,s_y:i32,e_x:i32,e_y:i32) -> u32{
+    let tmp =  ((s_x-e_x).pow(2)-(s_y-e_y).pow(2)) as f32;
+    return f32::sqrt(tmp).ceil() as u32;
+}
 // pub fn dist(p:&Person,st:&Structure) -> u32{
 //     return 
 // }
+
+
 
 impl Park {
     pub fn init(&self) {
@@ -97,8 +104,23 @@ impl Park {
     pub fn get_ppl(&self) -> &Vec<Person>{
         return &self.ppl;
     }
-    pub fn get_ppl_mut(&mut self) -> &mut Vec<Person>{
-        return &mut self.ppl;
+    pub fn get_ppl_mut(&mut self) -> &Vec<Person>{
+        return &self.ppl;
+    }
+
+    pub fn random_struct(&self) -> &Structure{
+        let mut rng = rand::thread_rng();
+
+        let weighted_index: WeightedIndex<u32> = WeightedIndex::new(&self.get_weights()).expect("Invalid weights");
+        println!("pesi: {:?}",weighted_index);
+        let st = &self.structures[weighted_index.sample(&mut rng)];
+
+        return st;
+        
+    }
+    pub fn random_struct_id(&self) -> u32{
+        return self.random_struct().id;
+        
     }
 
     fn get_struct_string(&self) -> String{
@@ -132,27 +154,30 @@ impl Park {
 
         for _ in 0..number{
             let mut p = Person{..Default::default()};
-            p.ready=false; //already has  a target
             let weighted_index = WeightedIndex::new(&self.get_weights()).expect("Invalid weights");
             let st = &mut self.get_struct_mut()[weighted_index.sample(&mut rng)];
             // let mut st = self.get_struct_mut().choose_weighted_mut(&mut rng, ).unwrap();
-            p.structure_id=st.id.clone();
+            // p.next=self.random_struct();
             // st.push_log(p.id.clone());
-            st.line+=1;
-            st.line_ppl.push(p.id.clone());
-            p.log_structures.push((0,0));
+            // st.line+=1;
+            // st.line_ppl.push(p.id.clone());
+            //p.log_structures.push((p.id,0));
             // p.dist
+            p.next=st.id;
+            let (e_x,e_y)=st.position; //final position of next
+            p.dist=dist(0_i32,0_i32,e_x as i32,e_y as i32)+1;
 
             self.log_ppl.push((p.id,true)); //add random person
             self.ppl.push(p); //add random person
+
+            
         }
     }
 
     pub fn add_structure(&mut self, number:u32){
-        let mut rng = rand::thread_rng();
 
         for _ in 0..number{
-            let mut st: Structure = Structure{..Default::default()};
+            let st: Structure = Structure{..Default::default()};
             self.structures.push(st);
 
         }
@@ -182,7 +207,7 @@ impl Park {
         for it in 0..iter{
             println!("epoc: {}",it);
 
-            self.add_person(5);
+            // self.add_person(1);
 
             self.advance(it);
 
@@ -202,9 +227,9 @@ impl Park {
         let mut tbf:Vec<u32>=vec![];
 
         let mut rng = rand::thread_rng();
-        let sts = self.get_struct_mut();
+        // let sts = ;
 
-        for st in sts{
+        for st in &mut self.structures{
             if st.running && st.finish_at<=current{     //stava andando e ha finito
                 // println!("[time: {current}] {} finished", st.name.as_str());
                 st.running=false;
@@ -221,35 +246,101 @@ impl Park {
                 //sposto le prsone dalla fila a l treno e cambio stato in unning
                 //aggiungo pressimo ready
                 let batch= std::cmp::min(st.line,st.capacity);  //massimo disponibile
-                for i in 0..batch{
+                for _ in 0..batch{
                     
                     st.running=true;
                     // println!("pre error line_ppl: {:?}",st.line_ppl);
                     // println!("batch: {}",batch);
                     // println!("st.line: {}",st.line);
                     // println!("i: {}",i);
-                    st.onboard_ppl.push( st.line_ppl[0]);
+                    let ppl_id=st.line_ppl[0];
+                    st.onboard_ppl.push( ppl_id);
+                    // println!("ppl_id: {}", ppl_id);
+                    // println!("{}", vec_to_string_ppl(&self.ppl));
+                    self.ppl[ppl_id as usize].onboard=true;
                     st.line_ppl.remove(0);//always the first because it's the first that came
                     st.line-=1;
+                    
                 }
                 st.finish_at = current+st.rtt;
             }
         }
 
-        let ppl=self.get_ppl_mut();
+        // let ppl=self.get_ppl_mut();
 
         for i in tbf{
             //free ppl tat got off the train
-            let p = &mut ppl[i as usize];
-            p.ready=true;
-            p.onboard=false;
+            // let p = &mut self.ppl[i as usize];
+            self.ppl[i as usize].onboard=false;
+            self.ppl[i as usize].waiting=false;
+            let next = self.random_struct_id();
+            self.ppl[i as usize].next=next;
+            self.ppl[i as usize].pause=rng.gen_range(0..10);
+
+            let (s_x,s_y)=self.ppl[i as usize].log_structures.last().unwrap().clone();
+            let ( e_x, e_y) = self.structures[next as usize].position;
+
+
+
+            self.ppl[i as usize].dist=dist(s_x as i32, s_y as i32, e_x as i32, e_y as i32);
         }
 
-        for p in ppl{
+        for p in &mut self.ppl{
+
+            // println!("{}-{}",p.name,p.id);
+            // println!("{}-{}",p.pause,p.dist);
+            // println!("-------------------------------------");
+
+            // print!("helloooo");
+            // p.name="test".to_string();
             //random if they chose another site
-            if p.ready && p.pause<=0{
-                                
+            // let max = self.get_struct().last().unwrap().id.clone();
+            // let (mut s_x,mut s_y)=(0 as u32, 0 as u32);
+            // let (mut e_x,mut e_y)=(0 as u32, 0 as u32);
+
+            // let (mut e_x,mut e_y)=self.get_struct()[rng.gen_range(0..max) as usize].position.clone();
+
+
+            // let new = self.random_struct_id();
+            // (e_x,e_y)=self.get_struct_mut()[new as usize].position.clone();
+    
+            
+             //final position of next
+
+            if p.dist>0{            //mi avvicino
+                p.dist-=1;
+                // println!("ridotto distance")
             }
+            if p.pause>0{            //posso rimettermi subito in fila
+                p.pause-=1;
+            }
+
+
+            // if p.log_structures.is_empty(){        //se è vuoto
+            //     (s_x,s_y)=p.log_structures.last().unwrap().clone(); //ultimo posto visitato come start
+            //     p.dist=dist(e_x as i32,e_y as i32,s_x as i32,s_y as i32)+1; //+1 per travel time
+            //     // p.next=new
+            // }
+
+            if !p.onboard && !p.waiting && p.pause<=0 && p.dist<=0{            
+                //non è a bordo
+                //non è in fila
+                //non è in pausa
+                //è arrivato a destinazione
+
+                println!("libero");
+
+                //allora lo aggiungo alla linea aggiorno le strutture visiteate
+                p.waiting=true;
+                p.log_structures.push( (p.next,current));
+                self.structures[p.next as usize].line_ppl.push(p.id);
+                self.structures[p.next as usize].line+=1;
+                // let st = self.structures[new as usize];
+
+            }
+
+
+
         }
     
         // for ppl in self.get_ppl_mut(){

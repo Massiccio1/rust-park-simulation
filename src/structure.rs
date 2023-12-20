@@ -29,17 +29,17 @@ impl Default for Structure {
         let x:u32 = rng.gen_range(1..10);
         let y:u32 = rng.gen_range(1..10);
 
-        return unsafe { 
+        unsafe { 
             
-            ID+=1;
+            
 
-            Structure{
+            let s=Structure{
                 name: format!("default_name_{ID}"),
                 id: ID,
                 position: (x ,y),
                 capacity: rng.gen_range(1..10),
-                rtt: rng.gen_range(3..20),
-                down_time: rng.gen_range(1..10),
+                rtt: rng.gen_range(3..5),
+                down_time: rng.gen_range(1..4),
             
                 line: 0, 
                 line_log: vec![],
@@ -50,7 +50,10 @@ impl Default for Structure {
                 finish_at: 0,
                 running:false
             
-            }
+            };
+            ID+=1;
+
+            return s;
         };
     }
 }

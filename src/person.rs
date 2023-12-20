@@ -10,31 +10,36 @@ pub struct Person{
     
     pub pause: u32,    //time to move from one zone to another
 
-    pub ready: bool,
     pub onboard: bool,
+    pub waiting: bool,
     pub dist: u32,
-    pub structure_id: u32
+    pub next: u32
 
 }
+
 
 impl Default for Person {
     fn default() -> Self {
 
         let mut rng = rand::thread_rng();
 
-        return unsafe{
-            ID+=1;
+        unsafe{
+            
 
-            Person{
+            let p = Person{
                 id: ID,
                 name: String::from("person_name"),
                 log_structures: vec![],
                 pause: rng.gen_range(0..5),
-                ready: true,
+                waiting: false,
                 dist: 0,
-                structure_id: 0,
+                next: 0,
                 onboard: false
-            }
+            };
+
+            ID+=1;
+
+            return p;
         }
 
     }
@@ -42,8 +47,14 @@ impl Default for Person {
 
 impl std::fmt::Display for Person {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "id: {} name: {} log structure: {:?}", 
-            self.id, self.name, self.log_structures)
+        write!(f, "id: {} name: {} 
+log structure: {:?}
+next: {}
+pause: {}
+onboard: {}
+waiting: {}
+distance: {}", 
+            self.id, self.name, self.log_structures, self.next, self.pause, self.waiting, self.onboard, self.dist)
     }
 }
 
