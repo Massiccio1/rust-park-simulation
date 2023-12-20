@@ -112,7 +112,7 @@ impl Park {
         let mut rng = rand::thread_rng();
 
         let weighted_index: WeightedIndex<u32> = WeightedIndex::new(&self.get_weights()).expect("Invalid weights");
-        println!("pesi: {:?}",weighted_index);
+        // println!("pesi: {:?}",weighted_index);
         let st = &self.structures[weighted_index.sample(&mut rng)];
 
         return st;
