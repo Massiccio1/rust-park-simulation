@@ -10,13 +10,23 @@ mod structure;
 mod park;
 mod person;
 
+
+const ITER:u32 = 100;
+
 fn main(){
     println!("-------------------------");
     println!("-------------------------");
     let mut p = park::Park{..Default::default()};
+    // p.init();
+    // println!("-------------------------");
+    // println!("-------------------------");
+    p.add_structure(4);
+    p.add_person(50);
     p.init();
-    p.add_person(4);
+    p.dump();
+    p.run(ITER);
     p.init();
+    p.dump();
 
 }
 

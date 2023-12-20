@@ -6,13 +6,14 @@ pub struct Person{
     pub id:u32,
     pub name: String,
 
-    pub log_structures: Vec<(Structure, u32)>, //vettore log dei luoghi visitati e il momento della visita
+    pub log_structures: Vec<(u32, u32)>, //vettore log dei luoghi visitati e il momento della visita
     
-    pub activity: f32,    //valore di attività da 0 a 1
+    pub pause: u32,    //valore di attività da 0 a 1
 
-    pub moving: bool,
+    pub ready: bool,
+    pub onboard: bool,
     pub dist: u32,
-    pub structure: Structure
+    pub structure_id: u32
 
 }
 
@@ -20,21 +21,19 @@ impl Default for Person {
     fn default() -> Self {
 
         let mut rng = rand::thread_rng();
-        let r:u32 = rng.gen_range(0..10);
-        let s = Structure{..Default::default()};
-
 
         return unsafe{
             ID+=1;
 
             Person{
                 id: ID,
-                name: String::from("default_name"),
+                name: String::from("person_name"),
                 log_structures: vec![],
-                activity: rng.gen_range(0.0..1.0),
-                moving: false,
+                pause: rng.gen_range(0..5),
+                ready: true,
                 dist: 0,
-                structure: s
+                structure_id: 0,
+                onboard: false
             }
         }
 
@@ -43,8 +42,8 @@ impl Default for Person {
 
 impl std::fmt::Display for Person {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
-        write!(f, "id: {} name: {}", 
-            self.id, self.name)
+        write!(f, "id: {} name: {} log structure: {:?}", 
+            self.id, self.name, self.log_structures)
     }
 }
 

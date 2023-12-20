@@ -1,0 +1,335 @@
+park name: parco Outer Heaven
+structures: name: default_name_1
+id: 1
+position: 4, 7
+capacity: 5
+rtt: 11
+down_time: 3
+current line: 18
+line_log: []
+line_ppl: [48, 56, 61, 68, 73, 74, 77, 84, 85, 88, 89, 94, 98, 99, 105, 126, 132, 140]
+attractivity: 7
+running: true
+onborard ppl: [25, 38, 40, 41, 44]
+
+name: default_name_2
+id: 2
+position: 7, 1
+capacity: 1
+rtt: 16
+down_time: 6
+current line: 38
+line_log: []
+line_ppl: [7, 8, 9, 10, 11, 29, 30, 31, 32, 34, 50, 57, 59, 62, 65, 67, 80, 82, 87, 91, 92, 96, 102, 103, 106, 108, 110, 111, 112, 116, 117, 123, 125, 127, 128, 131, 135, 139]
+attractivity: 5
+running: true
+onborard ppl: [2]
+
+name: default_name_3
+id: 3
+position: 5, 9
+capacity: 8
+rtt: 14
+down_time: 5
+current line: 15
+line_log: []
+line_ppl: [49, 58, 66, 69, 70, 71, 76, 79, 81, 95, 109, 118, 119, 122, 133]
+attractivity: 5
+running: true
+onborard ppl: [16, 18, 19, 28, 33, 37, 39, 47]
+
+name: default_name_4
+id: 4
+position: 7, 5
+capacity: 6
+rtt: 9
+down_time: 8
+current line: 44
+line_log: []
+line_ppl: [21, 22, 23, 24, 26, 27, 35, 36, 42, 43, 45, 46, 51, 52, 53, 54, 55, 60, 63, 64, 72, 75, 78, 83, 86, 90, 93, 97, 100, 101, 104, 107, 113, 114, 115, 120, 121, 124, 129, 130, 134, 136, 137, 138]
+attractivity: 9
+running: false
+onborard ppl: []
+
+
+number of ppl: 140
+people: id: 1 name: person_name log structure: [(0, 0)]
+---
+id: 2 name: person_name log structure: [(0, 0)]
+---
+id: 3 name: person_name log structure: [(0, 0)]
+---
+id: 4 name: person_name log structure: [(0, 0)]
+---
+id: 5 name: person_name log structure: [(0, 0)]
+---
+id: 6 name: person_name log structure: [(0, 0)]
+---
+id: 7 name: person_name log structure: [(0, 0)]
+---
+id: 8 name: person_name log structure: [(0, 0)]
+---
+id: 9 name: person_name log structure: [(0, 0)]
+---
+id: 10 name: person_name log structure: [(0, 0)]
+---
+id: 11 name: person_name log structure: [(0, 0)]
+---
+id: 12 name: person_name log structure: [(0, 0)]
+---
+id: 13 name: person_name log structure: [(0, 0)]
+---
+id: 14 name: person_name log structure: [(0, 0)]
+---
+id: 15 name: person_name log structure: [(0, 0)]
+---
+id: 16 name: person_name log structure: [(0, 0)]
+---
+id: 17 name: person_name log structure: [(0, 0)]
+---
+id: 18 name: person_name log structure: [(0, 0)]
+---
+id: 19 name: person_name log structure: [(0, 0)]
+---
+id: 20 name: person_name log structure: [(0, 0)]
+---
+id: 21 name: person_name log structure: [(0, 0)]
+---
+id: 22 name: person_name log structure: [(0, 0)]
+---
+id: 23 name: person_name log structure: [(0, 0)]
+---
+id: 24 name: person_name log structure: [(0, 0)]
+---
+id: 25 name: person_name log structure: [(0, 0)]
+---
+id: 26 name: person_name log structure: [(0, 0)]
+---
+id: 27 name: person_name log structure: [(0, 0)]
+---
+id: 28 name: person_name log structure: [(0, 0)]
+---
+id: 29 name: person_name log structure: [(0, 0)]
+---
+id: 30 name: person_name log structure: [(0, 0)]
+---
+id: 31 name: person_name log structure: [(0, 0)]
+---
+id: 32 name: person_name log structure: [(0, 0)]
+---
+id: 33 name: person_name log structure: [(0, 0)]
+---
+id: 34 name: person_name log structure: [(0, 0)]
+---
+id: 35 name: person_name log structure: [(0, 0)]
+---
+id: 36 name: person_name log structure: [(0, 0)]
+---
+id: 37 name: person_name log structure: [(0, 0)]
+---
+id: 38 name: person_name log structure: [(0, 0)]
+---
+id: 39 name: person_name log structure: [(0, 0)]
+---
+id: 40 name: person_name log structure: [(0, 0)]
+---
+id: 41 name: person_name log structure: [(0, 0)]
+---
+id: 42 name: person_name log structure: [(0, 0)]
+---
+id: 43 name: person_name log structure: [(0, 0)]
+---
+id: 44 name: person_name log structure: [(0, 0)]
+---
+id: 45 name: person_name log structure: [(0, 0)]
+---
+id: 46 name: person_name log structure: [(0, 0)]
+---
+id: 47 name: person_name log structure: [(0, 0)]
+---
+id: 48 name: person_name log structure: [(0, 0)]
+---
+id: 49 name: person_name log structure: [(0, 0)]
+---
+id: 50 name: person_name log structure: [(0, 0)]
+---
+id: 51 name: person_name log structure: [(0, 0)]
+---
+id: 52 name: person_name log structure: [(0, 0)]
+---
+id: 53 name: person_name log structure: [(0, 0)]
+---
+id: 54 name: person_name log structure: [(0, 0)]
+---
+id: 55 name: person_name log structure: [(0, 0)]
+---
+id: 56 name: person_name log structure: [(0, 0)]
+---
+id: 57 name: person_name log structure: [(0, 0)]
+---
+id: 58 name: person_name log structure: [(0, 0)]
+---
+id: 59 name: person_name log structure: [(0, 0)]
+---
+id: 60 name: person_name log structure: [(0, 0)]
+---
+id: 61 name: person_name log structure: [(0, 0)]
+---
+id: 62 name: person_name log structure: [(0, 0)]
+---
+id: 63 name: person_name log structure: [(0, 0)]
+---
+id: 64 name: person_name log structure: [(0, 0)]
+---
+id: 65 name: person_name log structure: [(0, 0)]
+---
+id: 66 name: person_name log structure: [(0, 0)]
+---
+id: 67 name: person_name log structure: [(0, 0)]
+---
+id: 68 name: person_name log structure: [(0, 0)]
+---
+id: 69 name: person_name log structure: [(0, 0)]
+---
+id: 70 name: person_name log structure: [(0, 0)]
+---
+id: 71 name: person_name log structure: [(0, 0)]
+---
+id: 72 name: person_name log structure: [(0, 0)]
+---
+id: 73 name: person_name log structure: [(0, 0)]
+---
+id: 74 name: person_name log structure: [(0, 0)]
+---
+id: 75 name: person_name log structure: [(0, 0)]
+---
+id: 76 name: person_name log structure: [(0, 0)]
+---
+id: 77 name: person_name log structure: [(0, 0)]
+---
+id: 78 name: person_name log structure: [(0, 0)]
+---
+id: 79 name: person_name log structure: [(0, 0)]
+---
+id: 80 name: person_name log structure: [(0, 0)]
+---
+id: 81 name: person_name log structure: [(0, 0)]
+---
+id: 82 name: person_name log structure: [(0, 0)]
+---
+id: 83 name: person_name log structure: [(0, 0)]
+---
+id: 84 name: person_name log structure: [(0, 0)]
+---
+id: 85 name: person_name log structure: [(0, 0)]
+---
+id: 86 name: person_name log structure: [(0, 0)]
+---
+id: 87 name: person_name log structure: [(0, 0)]
+---
+id: 88 name: person_name log structure: [(0, 0)]
+---
+id: 89 name: person_name log structure: [(0, 0)]
+---
+id: 90 name: person_name log structure: [(0, 0)]
+---
+id: 91 name: person_name log structure: [(0, 0)]
+---
+id: 92 name: person_name log structure: [(0, 0)]
+---
+id: 93 name: person_name log structure: [(0, 0)]
+---
+id: 94 name: person_name log structure: [(0, 0)]
+---
+id: 95 name: person_name log structure: [(0, 0)]
+---
+id: 96 name: person_name log structure: [(0, 0)]
+---
+id: 97 name: person_name log structure: [(0, 0)]
+---
+id: 98 name: person_name log structure: [(0, 0)]
+---
+id: 99 name: person_name log structure: [(0, 0)]
+---
+id: 100 name: person_name log structure: [(0, 0)]
+---
+id: 101 name: person_name log structure: [(0, 0)]
+---
+id: 102 name: person_name log structure: [(0, 0)]
+---
+id: 103 name: person_name log structure: [(0, 0)]
+---
+id: 104 name: person_name log structure: [(0, 0)]
+---
+id: 105 name: person_name log structure: [(0, 0)]
+---
+id: 106 name: person_name log structure: [(0, 0)]
+---
+id: 107 name: person_name log structure: [(0, 0)]
+---
+id: 108 name: person_name log structure: [(0, 0)]
+---
+id: 109 name: person_name log structure: [(0, 0)]
+---
+id: 110 name: person_name log structure: [(0, 0)]
+---
+id: 111 name: person_name log structure: [(0, 0)]
+---
+id: 112 name: person_name log structure: [(0, 0)]
+---
+id: 113 name: person_name log structure: [(0, 0)]
+---
+id: 114 name: person_name log structure: [(0, 0)]
+---
+id: 115 name: person_name log structure: [(0, 0)]
+---
+id: 116 name: person_name log structure: [(0, 0)]
+---
+id: 117 name: person_name log structure: [(0, 0)]
+---
+id: 118 name: person_name log structure: [(0, 0)]
+---
+id: 119 name: person_name log structure: [(0, 0)]
+---
+id: 120 name: person_name log structure: [(0, 0)]
+---
+id: 121 name: person_name log structure: [(0, 0)]
+---
+id: 122 name: person_name log structure: [(0, 0)]
+---
+id: 123 name: person_name log structure: [(0, 0)]
+---
+id: 124 name: person_name log structure: [(0, 0)]
+---
+id: 125 name: person_name log structure: [(0, 0)]
+---
+id: 126 name: person_name log structure: [(0, 0)]
+---
+id: 127 name: person_name log structure: [(0, 0)]
+---
+id: 128 name: person_name log structure: [(0, 0)]
+---
+id: 129 name: person_name log structure: [(0, 0)]
+---
+id: 130 name: person_name log structure: [(0, 0)]
+---
+id: 131 name: person_name log structure: [(0, 0)]
+---
+id: 132 name: person_name log structure: [(0, 0)]
+---
+id: 133 name: person_name log structure: [(0, 0)]
+---
+id: 134 name: person_name log structure: [(0, 0)]
+---
+id: 135 name: person_name log structure: [(0, 0)]
+---
+id: 136 name: person_name log structure: [(0, 0)]
+---
+id: 137 name: person_name log structure: [(0, 0)]
+---
+id: 138 name: person_name log structure: [(0, 0)]
+---
+id: 139 name: person_name log structure: [(0, 0)]
+---
+id: 140 name: person_name log structure: [(0, 0)]
+---
