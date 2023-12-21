@@ -11,7 +11,7 @@ mod park;
 mod person;
 
 
-const ITER:u32 = 1000;
+const ITER:u32 = 480;
 
 fn main(){
     println!("-------------------------");
@@ -20,13 +20,14 @@ fn main(){
     // p.init();
     // println!("-------------------------");
     // println!("-------------------------");
-    p.add_structure(3);
-    p.add_person(6);
-    p.init();
-    p.dump();
-    p.run(ITER);
+    p.add_structure(176);
+    p.add_person(50000);
     // p.init();
     p.dump();
+    p.run(ITER, 0, 0, false);
+    // p.init();
+    p.dump();
+    p.end();
 
 }
 

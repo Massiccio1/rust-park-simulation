@@ -6,6 +6,7 @@ use std::path::PathBuf;
 // mod structure;
 use crate::structure::Structure;
 use crate::person::Person;
+use crate::plt;
 use config::Config;
 use rand::Rng;
 use rand::distributions::{WeightedIndex, Distribution};
@@ -58,6 +59,20 @@ number of ppl: {}
 people: {}", self.name, self.get_struct_string(), self.ppl.len(), self.get_person_string())
     }
 }
+
+pub fn dezip<T: Clone>(s:&Vec<(T,T)>) -> (Vec<T>, Vec<T>){
+    let mut x:Vec<T>=vec![];
+    let mut y:Vec<T>=vec![];
+    for (a,b) in s{
+        // println!("[dezip] {a} - {b}");
+
+        x.push(a.clone());
+        y.push(b.clone());
+    }
+
+    return (x,y);
+}
+
 
 pub fn vec_to_string_str(vs:&Vec<Structure>) -> String{
     let mut s:String = String::from("");
@@ -203,21 +218,25 @@ impl Park {
         fs::write("files/park.txt", park).expect("Unable to write file");
     }
 
-    pub fn run(&mut self, iter:u32){
+    pub fn run(&mut self, iter:u32, sleep_time:u32, add_person:u32, dump_evey_run:bool){
         for it in 0..iter{
             println!("epoc: {}",it);
 
-            // self.add_person(1);
+
+            
+            self.add_person(add_person);
 
             self.advance(it);
 
 
 
-            self.dump();
+            if dump_evey_run{
+                self.dump();
+            }
 
 
-            println!("sleeping...");
-            let duration = time::Duration::from_secs(2);
+            // println!("sleeping...");
+            let duration = time::Duration::from_secs(sleep_time.into());
             thread::sleep(duration);
         }
     }
@@ -230,6 +249,9 @@ impl Park {
         // let sts = ;
 
         for st in &mut self.structures{
+
+            
+
             if st.running && st.finish_at<=current{     //stava andando e ha finito
                 // println!("[time: {current}] {} finished", st.name.as_str());
                 st.running=false;
@@ -264,6 +286,8 @@ impl Park {
                 }
                 st.finish_at = current+st.rtt;
             }
+
+            st.line_log.push(st.line);
         }
 
         // let ppl=self.get_ppl_mut();
@@ -328,7 +352,7 @@ impl Park {
                 //non è in pausa
                 //è arrivato a destinazione
 
-                println!("libero");
+                // println!("libero");
 
                 //allora lo aggiungo alla linea aggiorno le strutture visiteate
                 p.waiting=true;
@@ -349,5 +373,19 @@ impl Park {
         //         // println!("mr. {} {} è afk", ppl.name, ppl.id);
         //     }
         // }
+    }
+
+    pub fn end(&self){
+        // plt::test_plot();
+        // plt::test_bar();
+        // let log = &self.ppl[0].log_structures;
+        let (x, y)=dezip(&self.ppl[0].log_structures);
+        println!("{:?}", x);
+        println!("{:?}", y);
+        // plt::my_plot((y,x), true, true);
+
+        plt::plot_n_bar(&self.structures);
+
+        // plt::simple_subplot(true);
     }
 }

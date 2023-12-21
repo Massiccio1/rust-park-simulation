@@ -11,3 +11,4 @@ plotly = { version = ">0.6.0", features = ["kaleido"] }
 config = "0.13.1"
 rand = ">0.8.0"
 chrono = ">=0.4.31"
+serde = { version = "1.0", features = ["derive"] }

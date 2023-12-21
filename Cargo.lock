@@ -930,6 +930,7 @@ dependencies = [
  "config",
  "plotly",
  "rand",
+ "serde",
 ]
 
 [[package]]
