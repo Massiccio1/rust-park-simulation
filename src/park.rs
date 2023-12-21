@@ -368,7 +368,7 @@ impl Park {
         println!("{:?}", y);
         // plt::my_plot((y,x), true, true);
 
-        plt::plot_n_bar(&self.structures);
+        plt::plot_n_bar(&self.structures, true);
 
         // plt::simple_subplot(true);
     }

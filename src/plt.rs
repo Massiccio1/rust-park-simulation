@@ -83,7 +83,7 @@ pub fn plot_bar(x_data:Vec<i32>,y_data:Vec<i32>) {
     plot.show()
 }
 
-pub fn plot_n_bar(all_data:&Vec<Structure>) {
+pub fn plot_n_bar(all_data:&Vec<Structure>, save:bool) {
     // Define the data for the bar chart
 
     // Create a Bar trace
@@ -109,6 +109,14 @@ pub fn plot_n_bar(all_data:&Vec<Structure>) {
     plot.set_layout(layout);
 
     // Show the plot in the default browser
-    plot.show()
+    plot.show();
+
+    if save{
+        
+        fs::create_dir_all("../images").unwrap();
+
+        plot.write_image("../images/latest.png", ImageFormat::PNG, 800, 600, 1.0);
+        plot.write_image(format!("../images/{date}.png"), ImageFormat::PNG, 800, 600, 1.0);
+    }
 }
 
