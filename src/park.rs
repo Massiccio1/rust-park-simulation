@@ -1,7 +1,3 @@
-use core::num;
-use std::collections::HashSet;
-use std::{env, primitive};
-use std::path::PathBuf;
 
 // mod structure;
 use crate::structure::Structure;
@@ -10,7 +6,6 @@ use crate::plt;
 use config::Config;
 use rand::Rng;
 use rand::distributions::{WeightedIndex, Distribution};
-use rand::seq::SliceRandom;
 use std::fs;
 use std::{thread, time};
 
@@ -103,25 +98,14 @@ pub fn dist(s_x:i32,s_y:i32,e_x:i32,e_y:i32) -> u32{
 
 
 impl Park {
-    pub fn init(&self) {
 
-        println!("init Park class");
-        println!("tet print park: {self}");
-
-    }
-    
     pub fn get_struct(&self) -> &Vec<Structure>{
         return &self.structures;
     }
     pub fn get_struct_mut(&mut self) -> &mut Vec<Structure>{
         return &mut self.structures;
     }
-    pub fn get_ppl(&self) -> &Vec<Person>{
-        return &self.ppl;
-    }
-    pub fn get_ppl_mut(&mut self) -> &Vec<Person>{
-        return &self.ppl;
-    }
+
 
     pub fn random_struct(&self) -> &Structure{
         let mut rng = rand::thread_rng();

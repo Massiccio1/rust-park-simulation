@@ -1,9 +1,9 @@
-use plotly::{Plot, Scatter, ImageFormat};
-use chrono;
-use plotly::common::{Mode, Title};
-use rand::Rng;
+// use plotly::{Plot, Scatter, ImageFormat};
+// use chrono;
+// use plotly::common::{Mode, Title};
+// use rand::Rng;
 // use structure::Structure;
-use std::fs;
+// use std::fs;
 
 mod plt;
 mod structure;
@@ -11,7 +11,7 @@ mod park;
 mod person;
 
 
-const ITER:u32 = 480;
+const ITER:u32 = 10000;
 
 fn main(){
     println!("-------------------------");
@@ -20,8 +20,8 @@ fn main(){
     // p.init();
     // println!("-------------------------");
     // println!("-------------------------");
-    p.add_structure(176);
-    p.add_person(50000);
+    p.add_structure(42);
+    p.add_person(10000);
     // p.init();
     p.dump();
     p.run(ITER, 0, 0, false);
@@ -33,7 +33,7 @@ fn main(){
 
 #[test]
 fn test_plot(){
-    //plt::test_plot();
+    plt::test_plot();
 }
 
 
@@ -48,10 +48,10 @@ fn test_structure(){
 
 #[test]
 fn test_park(){
-    let p = park::Park{..Default::default()};
+    let _ = park::Park{..Default::default()};
 }
 
 #[test]
 fn test_person(){
-    let p = person::Person{..Default::default()};
+    let _ = person::Person{..Default::default()};
 }

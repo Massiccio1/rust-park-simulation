@@ -1,4 +1,3 @@
-use crate::structure::Structure;
 use rand::Rng;
 
 static mut ID:u32=0;
@@ -60,10 +59,4 @@ distance: {}",
 
 impl Person {
 
-    fn init(&self) {
-
-        println!("init person class");
-
-    }
- 
 }

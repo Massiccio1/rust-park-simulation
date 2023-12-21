@@ -79,20 +79,12 @@ onborard ppl: {:?}",
 
 impl Structure {
 
-    fn init(&self) {
-
-        println!("init Park class");
-
-    }
 
     pub fn to_string(&self) -> String{
         let s=format!("{}", &self);
         return s;
     }
 
-    pub fn push_log(&mut self , id:u32){
-        &self.line_log.push(id);
-    }
  
 }
 
