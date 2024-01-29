@@ -32,10 +32,10 @@ pub fn my_plot<T: std::clone::Clone + serde::ser::Serialize + 'static >(points:(
     
     if save{
         
-        fs::create_dir_all("../images").unwrap();
+        fs::create_dir_all("images").unwrap();
 
-        plot.write_image("../images/latest.png", ImageFormat::PNG, 800, 600, 1.0);
-        plot.write_image(format!("../images/{date}.png"), ImageFormat::PNG, 800, 600, 1.0);
+        plot.write_image("images/latest.png", ImageFormat::PNG, 800, 600, 1.0);
+        plot.write_image(format!("images/{date}.png"), ImageFormat::PNG, 800, 600, 1.0);
     }
 }
 
@@ -113,10 +113,11 @@ pub fn plot_n_bar(all_data:&Vec<Structure>, save:bool) {
 
     if save{
         
-        fs::create_dir_all("../images").unwrap();
-
-        plot.write_image("../images/latest.png", ImageFormat::PNG, 800, 600, 1.0);
-        plot.write_image(format!("../images/{date}.png"), ImageFormat::PNG, 800, 600, 1.0);
+        fs::create_dir_all("images").unwrap();
+        let date = chrono::offset::Local::now().to_string().replace(":", ".");
+        plot.write_image("images/latest.png", ImageFormat::PNG, 800, 600, 1.0);
+        println!("date: {}", date);
+        plot.write_image(format!("images/{date}.png"), ImageFormat::PNG, 800, 600, 1.0);
     }
 }
 
